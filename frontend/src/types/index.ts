@@ -30,3 +30,32 @@ export interface OverviewResponse {
   kpis: KpiItem[];
   records: OperationRecord[];
 }
+
+export interface TeamInfo {
+  id: number;
+  name: string;
+  leader_name: string;
+  member_count: number;
+}
+
+export interface BattleChallenge {
+  id: number;
+  challenger_team: TeamInfo;
+  challenged_team: TeamInfo;
+  venue_name: string;
+  battle_time: string;
+  status: "pending" | "confirmed" | "cancelled";
+  message: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BattleListResponse {
+  pending: BattleChallenge[];
+  confirmed: BattleChallenge[];
+  pending_count: number;
+}
+
+export interface BattleActionRequest {
+  challenge_id: number;
+}
